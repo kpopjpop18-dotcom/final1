@@ -1,0 +1,136 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-pink: var(--pink);
+  --color-blue: var(--blue);
+  --color-green: var(--green);
+  --color-yellow: var(--yellow);
+  --color-purple: var(--purple);
+  --color-peach: var(--peach);
+  --color-rarity-common: var(--rarity-common);
+  --color-rarity-rare: var(--rarity-rare);
+  --color-rarity-ultra: var(--rarity-ultra);
+  --color-rarity-impossible: var(--rarity-impossible);
+}
+
+:root {
+  --radius: 1.25rem;
+  --background: oklch(0.985 0.02 320);
+  --foreground: oklch(0.28 0.08 320);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.28 0.08 320);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.28 0.08 320);
+  --primary: oklch(0.75 0.15 340);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.92 0.06 200);
+  --secondary-foreground: oklch(0.28 0.08 240);
+  --muted: oklch(0.96 0.02 320);
+  --muted-foreground: oklch(0.5 0.05 320);
+  --accent: oklch(0.9 0.08 280);
+  --accent-foreground: oklch(0.28 0.08 280);
+  --destructive: oklch(0.68 0.2 20);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.9 0.04 320);
+  --input: oklch(0.94 0.03 320);
+  --ring: oklch(0.75 0.15 340);
+
+  --pink: oklch(0.85 0.09 350);
+  --blue: oklch(0.85 0.08 230);
+  --green: oklch(0.88 0.09 150);
+  --yellow: oklch(0.92 0.1 95);
+  --purple: oklch(0.85 0.09 300);
+  --peach: oklch(0.88 0.09 50);
+
+  --rarity-common: oklch(0.8 0.03 250);
+  --rarity-rare: oklch(0.78 0.13 200);
+  --rarity-ultra: oklch(0.72 0.18 300);
+  --rarity-impossible: oklch(0.75 0.2 40);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html, body, #root {
+    height: 100%;
+  }
+  body {
+    background:
+      radial-gradient(1000px 600px at 10% -10%, oklch(0.92 0.08 340 / 0.6), transparent 60%),
+      radial-gradient(800px 500px at 100% 10%, oklch(0.92 0.08 230 / 0.55), transparent 60%),
+      radial-gradient(700px 500px at 50% 100%, oklch(0.92 0.09 150 / 0.5), transparent 60%),
+      var(--color-background);
+    color: var(--color-foreground);
+    font-family: ui-rounded, "Nunito", "Quicksand", system-ui, sans-serif;
+  }
+}
+
+@keyframes sparkle {
+  0% { opacity: 0; transform: scale(0.5) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1.2) rotate(180deg); }
+  100% { opacity: 0; transform: scale(0.5) rotate(360deg); }
+}
+@keyframes reveal-pop {
+  0% { opacity: 0; transform: scale(0.4); }
+  60% { opacity: 1; transform: scale(1.08); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes float-y {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.aos-sparkle {
+  animation: sparkle 1.2s ease-in-out infinite;
+}
+.aos-reveal {
+  animation: reveal-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.aos-float {
+  animation: float-y 3s ease-in-out infinite;
+}
+.aos-gold-frame {
+  box-shadow: 0 0 0 4px oklch(0.9 0.16 95), 0 0 24px oklch(0.9 0.16 95 / 0.7);
+}
+.aos-dupe-frame {
+  box-shadow: 0 0 0 4px oklch(0.75 0.2 25), 0 0 20px oklch(0.75 0.2 25 / 0.6);
+}
+.aos-tile {
+  background: linear-gradient(135deg, oklch(1 0 0 / 0.85), oklch(1 0 0 / 0.55));
+  backdrop-filter: blur(10px);
+  border: 1px solid oklch(1 0 0 / 0.6);
+}
